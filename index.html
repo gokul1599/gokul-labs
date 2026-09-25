@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gokul — Developer & Builder</title>
+
+    <meta
+        name="description"
+        content="Gokul's personal portfolio — software, AI, web experiences and products."
+    >
+
+    <meta name="theme-color" content="#050505">
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(92, 92, 255, 0.16),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(0, 220, 190, 0.08),
+                    transparent 22%
+                ),
+                radial-gradient(
+                    circle at 50% 90%,
+                    rgba(255, 80, 180, 0.08),
+                    transparent 25%
+                ),
+                #050505;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.02) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.02) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+            mask-image: linear-gradient(
+                to bottom,
+                rgba(0,0,0,1),
+                rgba(0,0,0,0.2)
+            );
+        }
+
+
+        /* =========================================================
+           CURSOR GLOW
+        ========================================================= */
+
+        .cursor-glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.045),
+                    transparent 65%
+                );
+
+            transform: translate(-50%, -50%);
+            transition:
+                left 0.15s ease,
+                top 0.15s ease;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .navbar {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: min(1160px, calc(100% - 30px));
+
+            padding: 12px 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                rgba(10,10,10,0.72);
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            border-radius: 18px;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 20px 70px rgba(0,0,0,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.03);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .brand-icon {
+            width: 35px;
+            height: 35px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #9c9c9c
+                );
+
+            color: #000;
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 9px 12px;
+            border-radius: 9px;
+
+            color: #8d8d8d;
+            font-size: 13px;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-button {
+            padding: 10px 14px;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+            color: #000000;
+
+            font-size: 13px;
+            font-weight: 750;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px rgba(255,255,255,0.12);
+        }
+
+
+        /* =========================================================
+           MAIN LAYOUT
+        ========================================================= */
+
+        section {
+            width: min(1160px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            padding-top: 150px;
+            padding-bottom: 80px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .availability {
+            width: fit-content;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                rgba(255,255,255,0.03);
+
+            color: #a1a1a1;
+            font-size: 12px;
+
+            margin-bottom: 28px;
+        }
+
+        .status {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #6effae;
+
+            box-shadow:
+                0 0 18px rgba(110,255,174,0.7);
+        }
+
+        .hero h1 {
+            max-width: 1050px;
+
+            font-size:
+                clamp(64px, 11vw, 145px);
+
+            line-height: 0.84;
+
+            letter-spacing: -0.085em;
+
+            font-weight: 850;
+        }
+
+        .hero-line {
+            display: block;
+        }
+
+        .hero-gradient {
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff 0%,
+                    #7d7d7d 42%,
+                    #ffffff 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 700px;
+
+            margin-top: 35px;
+
+            color: #8d8d8d;
+
+            font-size:
+                clamp(17px, 2vw, 21px);
+
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .button-primary {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .button-secondary {
+            background: rgba(255,255,255,0.03);
+            color: #ffffff;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .hero-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+
+            padding-top: 24px;
+            margin-top: 80px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            color: #686868;
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           SECTION HEADINGS
+        ========================================================= */
+
+        .section {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 20px;
+
+            color: #707070;
+
+            text-transform: uppercase;
+            letter-spacing: 0.17em;
+
+            font-size: 10px;
+        }
+
+        .section-label::before {
+            content: "";
+
+            width: 24px;
+            height: 1px;
+
+            background: #545454;
+        }
+
+        .section-title {
+            max-width: 900px;
+
+            font-size:
+                clamp(46px, 7vw, 82px);
+
+            line-height: 0.95;
+
+            letter-spacing: -0.07em;
+        }
+
+        .section-title-muted {
+            color: #686868;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 80px;
+
+            margin-top: 55px;
+        }
+
+        .about-main {
+            flex: 1.4;
+
+            color: #efefef;
+
+            font-size:
+                clamp(25px, 4vw, 42px);
+
+            line-height: 1.2;
+
+            letter-spacing: -0.045em;
+        }
+
+        .about-main span {
+            color: #686868;
+        }
+
+        .about-side {
+            flex: 0.8;
+        }
+
+        .about-card {
+            border-top:
+                1px solid rgba(255,255,255,0.09);
+
+            padding-top: 18px;
+            padding-bottom: 28px;
+        }
+
+        .about-card-title {
+            margin-bottom: 8px;
+
+            color: #aaaaaa;
+
+            text-transform: uppercase;
+            letter-spacing: 0.13em;
+
+            font-size: 10px;
+        }
+
+        .about-card p {
+            color: #707070;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+            display: flex;
+
+            margin-top: 55px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat {
+            flex: 1;
+
+            padding: 28px 20px;
+
+            border-right:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            display: block;
+
+            font-size: 35px;
+
+            letter-spacing: -0.05em;
+            font-weight: 800;
+        }
+
+        .stat-label {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #696969;
+            font-size: 11px;
+
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .work-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .work-intro {
+            max-width: 360px;
+
+            color: #707070;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .projects-list {
+            margin-top: 60px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 24px;
+        }
+
+        .project-card {
+            position: relative;
+
+            min-height: 470px;
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            overflow: hidden;
+
+            border-radius: 28px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.012)
+                );
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(255,255,255,0.18);
+        }
+
+        .project-number {
+            position: absolute;
+            right: 28px;
+            top: 25px;
+
+            color: #575757;
+            font-size: 11px;
+
+            letter-spacing: 0.1em;
+        }
+
+        .project-visual {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+        }
+
+        .project-orb {
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    #ffffff,
+                    #b5b5b5 8%,
+                    #414141 38%,
+                    #151515 68%,
+                    #050505 100%
+                );
+
+            box-shadow:
+                0 0 100px rgba(255,255,255,0.08),
+                inset -35px -35px 75px rgba(0,0,0,0.65);
+
+            opacity: 0.65;
+
+            transition:
+                transform 0.6s ease;
+        }
+
+        .project-card:hover .project-orb {
+            transform: scale(1.1) rotate(12deg);
+        }
+
+        .project-card:nth-child(2) .project-orb {
+            border-radius: 42% 58% 55% 45%;
+
+            transform:
+                rotate(20deg)
+                scale(0.95);
+        }
+
+        .project-card:nth-child(3) .project-orb {
+            width: 230px;
+            height: 310px;
+
+            border-radius: 50% 50% 40% 40%;
+
+            transform:
+                rotate(-18deg);
+        }
+
+        .project-card:nth-child(4) .project-orb {
+            width: 260px;
+            height: 260px;
+
+            border-radius: 35%;
+
+            transform: rotate(45deg);
+        }
+
+        .project-card:nth-child(5) .project-orb {
+            width: 250px;
+            height: 250px;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    #ffffff,
+                    #909090 15%,
+                    #313131 48%,
+                    #070707 80%
+                );
+        }
+
+        .project-card:nth-child(6) .project-orb {
+            width: 220px;
+            height: 280px;
+
+            border-radius: 45% 55% 48% 52%;
+
+            transform: rotate(15deg);
+        }
+
+        .project-card:nth-child(7) .project-orb {
+            width: 240px;
+            height: 240px;
+
+            border-radius: 22px;
+
+            transform: rotate(30deg);
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 760px;
+        }
+
+        .project-category {
+            width: fit-content;
+
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                rgba(0,0,0,0.28);
+
+            color: #8e8e8e;
+
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+
+            font-size: 9px;
+        }
+
+        .project-card h3 {
+            font-size:
+                clamp(42px, 6vw, 78px);
+
+            line-height: 0.9;
+
+            letter-spacing: -0.07em;
+        }
+
+        .project-card p {
+            max-width: 600px;
+
+            margin-top: 17px;
+
+            color: #808080;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 23px;
+
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+        .project-link span {
+            transition:
+                transform 0.25s ease;
+        }
+
+        .project-link:hover span {
+            transform: translate(3px, -3px);
+        }
+
+
+        /* =========================================================
+           SMALL PROJECTS
+        ========================================================= */
+
+        .small-projects {
+            margin-top: 28px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 16px;
+        }
+
+        .small-project {
+            flex: 1 1 250px;
+
+            padding: 24px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .small-project:hover {
+            transform: translateY(-5px);
+
+            background:
+                rgba(255,255,255,0.045);
+        }
+
+        .small-project h4 {
+            font-size: 21px;
+            letter-spacing: -0.04em;
+        }
+
+        .small-project p {
+            margin-top: 8px;
+
+            color: #707070;
+
+            font-size: 13px;
+        }
+
+        .small-project a {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           TECH STACK
+        ========================================================= */
+
+        .stack-list {
+            margin-top: 55px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            border-left:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .stack-item {
+            flex: 1 1 25%;
+            min-height: 150px;
+
+            padding: 24px;
+
+            border-right:
+                1px solid rgba(255,255,255,0.08);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            transition:
+                background 0.3s ease;
+        }
+
+        .stack-item:hover {
+            background:
+                rgba(255,255,255,0.035);
+        }
+
+        .stack-number {
+            color: #505050;
+
+            font-size: 10px;
+
+            margin-bottom: 35px;
+        }
+
+        .stack-item h4 {
+            font-size: 18px;
+            letter-spacing: -0.03em;
+        }
+
+        .stack-item p {
+            margin-top: 6px;
+
+            color: #666666;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           JOURNEY
+        ========================================================= */
+
+        .timeline {
+            margin-top: 55px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 45px;
+
+            padding: 30px 0;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .timeline-year {
+            width: 110px;
+            flex-shrink: 0;
+
+            color: #565656;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: 26px;
+
+            letter-spacing: -0.04em;
+        }
+
+        .timeline-content p {
+            max-width: 650px;
+
+            margin-top: 9px;
+
+            color: #6f6f6f;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           SOCIALS
+        ========================================================= */
+
+        .social-row {
+            margin-top: 45px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .social-link {
+            padding: 12px 16px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            border-radius: 11px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            color: #a0a0a0;
+
+            font-size: 12px;
+
+            transition:
+                transform 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+
+            color: #ffffff;
+
+            border-color:
+                rgba(255,255,255,0.18);
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 70px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(255,255,255,0.08),
+                    transparent 24%
+                ),
+                rgba(255,255,255,0.025);
+        }
+
+        .contact-card h2 {
+            max-width: 850px;
+
+            font-size:
+                clamp(52px, 8vw, 105px);
+
+            line-height: 0.9;
+
+            letter-spacing: -0.08em;
+        }
+
+        .contact-card h2 span {
+            color: #666666;
+        }
+
+        .contact-card p {
+            max-width: 540px;
+
+            margin-top: 25px;
+
+            color: #7b7b7b;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 28px;
+        }
+
+        .contact-glow {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -110px;
+            bottom: -130px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            filter: blur(70px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            width: min(1160px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding:
+                30px 0
+                40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            color: #565656;
+
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(28px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-layout {
+                flex-direction: column;
+                gap: 45px;
+            }
+
+            .work-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stack-item {
+                flex-basis: 50%;
+            }
+
+            .timeline-item {
+                gap: 25px;
+            }
+
+            .contact-card {
+                padding: 50px 35px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            section {
+                width: calc(100% - 28px);
+            }
+
+            .navbar {
+                width: calc(100% - 18px);
+                top: 9px;
+            }
+
+            .hero {
+                padding-top: 120px;
+                min-height: 92vh;
+            }
+
+            .hero h1 {
+                font-size:
+                    clamp(56px, 16vw, 92px);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 60px;
+            }
+
+            .section {
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .section-title {
+                font-size:
+                    clamp(43px, 13vw, 70px);
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat {
+                border-right: none;
+
+                border-bottom:
+                    1px solid rgba(255,255,255,0.08);
+            }
+
+            .stat:last-child {
+                border-bottom: none;
+            }
+
+            .projects-list {
+                margin-top: 40px;
+            }
+
+            .project-card {
+                min-height: 500px;
+
+                padding: 22px;
+
+                border-radius: 22px;
+            }
+
+            .project-visual {
+                opacity: 0.5;
+            }
+
+            .small-project {
+                flex-basis: 100%;
+            }
+
+            .stack-item {
+                flex-basis: 100%;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .timeline-year {
+                width: auto;
+            }
+
+            .contact-card {
+                padding: 38px 24px;
+                border-radius: 22px;
+            }
+
+            footer {
+                width: calc(100% - 28px);
+
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cursor glow -->
+    <div class="cursor-glow"></div>
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="brand">
+            <span class="brand-icon">G</span>
+            <span>Gokul</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#stack">Stack</a>
+            <a href="#journey">Journey</a>
+        </div>
+
+        <a href="#contact" class="nav-button">
+            Let's Talk
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="availability reveal">
+                <span class="status"></span>
+                Building. Learning. Experimenting.
+            </div>
+
+            <h1 class="reveal">
+
+                <span class="hero-line">
+                    I build
+                </span>
+
+                <span class="hero-line hero-gradient">
+                    digital products.
+                </span>
+
+            </h1>
+
+            <p class="hero-description reveal">
+                I'm Gokul — a computer science student and developer
+                exploring AI, software engineering, web experiences
+                and ambitious product ideas.
+            </p>
+
+            <div class="hero-actions reveal">
+
+                <a
+                    href="#work"
+                    class="button button-primary"
+                >
+                    Explore my work →
+                </a>
+
+                <a
+                    href="https://github.com/gokul1599"
+                    target="_blank"
+                    class="button button-secondary"
+                >
+                    GitHub ↗
+                </a>
+
+            </div>
+
+            <div class="hero-bottom reveal">
+
+                <span>
+                    India
+                </span>
+
+                <span>
+                    AI × Code × Product
+                </span>
+
+                <span>
+                    @buildweb.lab
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT
+        ====================================================== -->
+
+        <section class="section" id="about">
+
+            <span class="section-label">
+                01 / About
+            </span>
+
+            <h2 class="section-title reveal">
+                Curious by nature.
+                <span class="section-title-muted">
+                    Builder by choice.
+                </span>
+            </h2>
+
+            <div class="about-layout">
+
+                <div class="about-main reveal">
+
+                    I like taking ideas from
+                    <span>“what if?”</span>
+                    to something people can actually
+                    <strong>see, use and experience.</strong>
+
+                </div>
+
+                <div class="about-side reveal">
+
+                    <div class="about-card">
+
+                        <div class="about-card-title">
+                            Focus
+                        </div>
+
+                        <p>
+                            Software development, AI-powered products,
+                            web applications and modern user experiences.
+                        </p>
+
+                    </div>
+
+                    <div class="about-card">
+
+                        <div class="about-card-title">
+                            Philosophy
+                        </div>
+
+                        <p>
+                            Learn the fundamentals, build real things,
+                            break them, improve them and repeat.
+                        </p>
+
+                    </div>
+
+                    <div class="about-card">
+
+                        <div class="about-card-title">
+                            Current Chapter
+                        </div>
+
+                        <p>
+                            Studying computer science while building
+                            independent projects and experimenting
+                            with new product ideas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats reveal">
+
+                <div class="stat">
+                    <span class="stat-number">07+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Ideas</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Curiosity</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">01</span>
+                    <span class="stat-label">Journey</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WORK
+        ====================================================== -->
+
+        <section class="section" id="work">
+
+            <div class="work-header">
+
+                <div>
+
+                    <span class="section-label">
+                        02 / Selected Work
+                    </span>
+
+                    <h2 class="section-title reveal">
+                        Things I've
+                        <span class="section-title-muted">
+                            built.
+                        </span>
+                    </h2>
+
+                </div>
+
+                <p class="work-intro reveal">
+                    A collection of experiments, products and web
+                    experiences built while learning and exploring
+                    different directions in technology.
+                </p>
+
+            </div>
+
+
+            <div class="projects-list">
+
+
+                <!-- =================================================
+                     VALTORA
+                ================================================== -->
+
+                <article class="project-card reveal">
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <div class="project-visual">
+                        <div class="project-orb"></div>
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-category">
+                            AI / Product
+                        </span>
+
+                        <h3>
+                            VALTORA
+                        </h3>
+
+                        <p>
+                            An AI-powered startup co-founder experience
+                            designed to help turn ideas into structured
+                            product concepts and opportunities.
+                        </p>
+
+                        <a
+                            href="https://valtora-swart.vercel.app"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View project
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     LIFEHUB
+                ================================================== -->
+
+                <article class="project-card reveal">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <div class="project-visual">
+                        <div class="project-orb"></div>
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-category">
+                            Digital Platform
+                        </span>
+
+                        <h3>
+                            LifeHub
+                        </h3>
+
+                        <p>
+                            A digital platform concept focused on
+                            bringing useful everyday experiences,
+                            tools and information into one place.
+                        </p>
+
+                        <a
+                            href="https://lifehub-sage.vercel.app"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View project
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     DEVYATRA
+                ================================================== -->
+
+                <article class="project-card reveal">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <div class="project-visual">
+                        <div class="project-orb"></div>
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-category">
+                            Discovery Platform
+                        </span>
+
+                        <h3>
+                            Devyatra
+                        </h3>
+
+                        <p>
+                            A temple discovery platform built around
+                            India's sacred destinations, discovery,
+                            exploration and structured location data.
+                        </p>
+
+                        <a
+                            href="https://templeora.vercel.app"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View project
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     TELUGUVA
+                ================================================== -->
+
+                <article class="project-card reveal">
+
+                    <span class="project-number">
+                        04
+                    </span>
+
+                    <div class="project-visual">
+                        <div class="project-orb"></div>
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-category">
+                            Web Experience
+                        </span>
+
+                        <h3>
+                            Teluguva
+                        </h3>
+
+                        <p>
+                            A Telugu-focused web experience exploring
+                            regional identity, digital content and
+                            modern presentation.
+                        </p>
+
+                        <a
+                            href="https://teluguva.vercel.app"
+                            target="_blank"
+                            class="project-link"
+                        >
+                            View project
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =====================================================
+                 ADDITIONAL PROJECTS
+            ====================================================== -->
+
+            <div class="small-projects">
+
+
+                <div class="small-project reveal">
+
+                    <h4>
+                        BuildShift
+                    </h4>
+
+                    <p>
+                        A web project exploring another direction
+                        in modern digital experiences.
+                    </p>
+
+                    <a
+                        href="https://buildshift-green.vercel.app"
+                        target="_blank"
+                    >
+                        Open project ↗
+                    </a>
+
+                </div>
+
+
+                <div class="small-project reveal">
+
+                    <h4>
+                        Project 2
+                    </h4>
+
+                    <p>
+                        A GitHub Pages web development project.
+                    </p>
+
+                    <a
+                        href="https://gokul1599.github.io/project-2/"
+                        target="_blank"
+                    >
+                        Open project ↗
+                    </a>
+
+                </div>
+
+
+                <div class="small-project reveal">
+
+                    <h4>
+                        Project 1
+                    </h4>
+
+                    <p>
+                        An early web development project hosted
+                        using GitHub Pages.
+                    </p>
+
+                    <a
+                        href="https://gokul1599.github.io/project--1/"
+                        target="_blank"
+                    >
+                        Open project ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STACK
+        ====================================================== -->
+
+        <section class="section" id="stack">
+
+            <span class="section-label">
+                03 / Stack
+            </span>
+
+            <h2 class="section-title reveal">
+                Tools for
+                <span class="section-title-muted">
+                    building.
+                </span>
+            </h2>
+
+            <div class="stack-list">
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        01
+                    </div>
+
+                    <h4>
+                        HTML / CSS
+                    </h4>
+
+                    <p>
+                        Semantic interfaces and responsive layouts
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        02
+                    </div>
+
+                    <h4>
+                        JavaScript
+                    </h4>
+
+                    <p>
+                        Interactive web experiences
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        03
+                    </div>
+
+                    <h4>
+                        React
+                    </h4>
+
+                    <p>
+                        Component-driven applications
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        04
+                    </div>
+
+                    <h4>
+                        Next.js
+                    </h4>
+
+                    <p>
+                        Modern full-stack web applications
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        05
+                    </div>
+
+                    <h4>
+                        AI
+                    </h4>
+
+                    <p>
+                        Intelligent product experiences
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        06
+                    </div>
+
+                    <h4>
+                        Three.js
+                    </h4>
+
+                    <p>
+                        3D experiences on the web
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        07
+                    </div>
+
+                    <h4>
+                        GSAP
+                    </h4>
+
+                    <p>
+                        Motion and scroll animation
+                    </p>
+
+                </div>
+
+
+                <div class="stack-item reveal">
+
+                    <div class="stack-number">
+                        08
+                    </div>
+
+                    <h4>
+                        Git / GitHub
+                    </h4>
+
+                    <p>
+                        Version control and deployment
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             JOURNEY
+        ====================================================== -->
+
+        <section class="section" id="journey">
+
+            <span class="section-label">
+                04 / Journey
+            </span>
+
+            <h2 class="section-title reveal">
+                Early stage.
+                <span class="section-title-muted">
+                    Long road ahead.
+                </span>
+            </h2>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-year">
+                        2026
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h4>
+                            Computer Science
+                        </h4>
+
+                        <p>
+                            Building a stronger foundation in
+                            computer science while studying and
+                            working on practical projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-year">
+                        Now
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h4>
+                            Learn → Build → Iterate
+                        </h4>
+
+                        <p>
+                            Turning concepts into real interfaces,
+                            applications and experiments instead of
+                            keeping ideas only as notes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-year">
+                        Next
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h4>
+                            Build meaningful products
+                        </h4>
+
+                        <p>
+                            Continue exploring software, AI,
+                            product design and ambitious startup ideas
+                            while creating things that people can use.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Social links -->
+
+            <div class="social-row reveal">
+
+                <a
+                    href="https://github.com/gokul1599"
+                    target="_blank"
+                    class="social-link"
+                >
+                    GitHub ↗
+                </a>
+
+                <a
+                    href="https://www.instagram.com/buildweb.lab/"
+                    target="_blank"
+                    class="social-link"
+                >
+                    Instagram ↗
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+
+        <section class="section" id="contact">
+
+            <div class="contact-card reveal">
+
+                <div class="contact-glow"></div>
+
+                <span class="section-label">
+                    05 / Contact
+                </span>
+
+                <h2>
+                    Let's build
+                    <span>
+                        something interesting.
+                    </span>
+                </h2>
+
+                <p>
+                    Have a project, idea or opportunity?
+                    I'd love to connect, learn about it and
+                    explore what we can create.
+                </p>
+
+
+                <div class="contact-actions">
+
+                    <!-- Replace this email with your real email -->
+
+                    <a
+                        href="mailto:your-email@example.com"
+                        class="button button-primary"
+                    >
+                        Send an email →
+                    </a>
+
+                    <a
+                        href="https://github.com/gokul1599"
+                        target="_blank"
+                        class="button button-secondary"
+                    >
+                        Visit GitHub ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <span>
+            © 2026 Gokul. Built with curiosity.
+        </span>
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#work">
+                Work
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         Small interactions only
+    ========================================================= -->
+
+    <script>
+
+        /* ---------------------------------------------------------
+           Cursor glow
+        --------------------------------------------------------- */
+
+        const cursorGlow =
+            document.querySelector(".cursor-glow");
+
+        document.addEventListener("mousemove", (event) => {
+
+            cursorGlow.style.left =
+                event.clientX + "px";
+
+            cursorGlow.style.top =
+                event.clientY + "px";
+
+        });
+
+
+        /* ---------------------------------------------------------
+           Scroll reveal
+        --------------------------------------------------------- */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach((element) => {
+
+            observer.observe(element);
+
+        });
+
+    </script>
+
+</body>
+</html>
